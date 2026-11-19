@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#12181d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>SIROCCO · 五段作战 — 战术拆弹</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css?v=20261118a">
+</head>
+<body>
+  <main id="app">
+    <canvas id="view" tabindex="0" aria-label="SIROCCO 战术射击游戏画面"></canvas>
+    <div id="ui"></div>
+    <div id="hud" hidden>
+      <div class="radar"><canvas id="radar" width="220" height="220"></canvas><span id="location">出发区</span></div>
+      <div class="score"><b id="ct-score">0</b><div><span id="round">第 1 关</span><strong id="timer">1:45</strong></div><b id="t-score">0</b></div>
+      <div class="top-actions"><button id="sound" title="声音开关">声音：开</button><button id="pause" title="暂停">Ⅱ</button></div>
+      <div id="feed"></div>
+      <div id="objective"></div>
+      <div id="crosshair"><i></i><i></i><i></i><i></i><em></em></div>
+      <div id="hitmarker">×</div>
+      <div id="interact" hidden><span id="prompt"></span><div><i id="hold-progress"></i></div></div>
+      <div class="vitals"><span>✚ <b id="health">100</b></span><span>◇ <b id="armor">100</b></span></div>
+      <div class="ammo"><span id="weapon-name">AK-47</span><div><b id="ammo">30</b><span>/ <span id="reserve">90</span></span></div><small id="reload-state"></small></div>
+      <div id="round-banner" hidden></div><div id="hurt"></div>
+      <span class="hint">WASD 移动 · Shift 慢走 · 鼠标瞄准 · 左键开火 · R 装填 · 按住 E 交互 · P 暂停</span>
+    </div>
+    <section id="menu" class="overlay">
+      <div class="menu-content">
+        <p class="eyebrow">战术演练 / SIROCCO 五段作战</p>
+        <h1>SIROCCO<span>五种光线。同一个目标。</span></h1>
+        <p class="intro">五个街区，从正午打到拂晓。<br>每张地图都要重新找路线，每一次开火都要算成本。</p>
+        <fieldset><legend>选择关卡</legend><div id="level-list" class="level-list"></div></fieldset>
+        <p id="briefing" class="briefing"></p>
+        <p id="level-tag" class="level-tag"></p>
+        <fieldset><legend>作战身份</legend><div class="choices"><button data-role="attack" class="selected">进攻<small>把炸药送到指定区</small></button><button data-role="defend">防守<small>在限时内拆除炸药</small></button></div></fieldset>
+        <fieldset><legend>主武器</legend><div class="choices weapons"><button data-weapon="ak" class="selected">AK-47<small>伤害高 · 后坐力强</small></button><button data-weapon="m4">M4A1<small>射速快 · 好压枪</small></button></div></fieldset>
+        <button id="start" class="primary" disabled>准备中…</button>
+        <p class="controls">左半屏任意位置按住拖动就走路 · 右下 FIRE 开火 · AIM 开镜<br>RLD 换弹 · JUMP 跳 · USE 安放/拆除 · 右上 Ⅱ 暂停</p>
+      </div>
+      <div class="map-caption"><span>SIROCCO</span><b>五段作战</b><small>五张地图 · 全中文 · 单人对战 AI</small></div>
+    </section>
+    <section id="pause-menu" class="modal" hidden><div><p class="eyebrow">SIROCCO</p><h2>已暂停</h2><button id="resume" class="primary">继续作战</button><button id="restart">重打本关</button><button id="back">返回关卡选择</button></div></section>
+    <section id="result" class="modal" hidden><div><p id="result-team" class="eyebrow"></p><h2 id="result-title"></h2><p id="result-detail"></p><button id="next" class="primary">下一关</button><button id="result-back">返回关卡选择</button></div></section>
+    <div id="boot"><span>SIROCCO</span><p id="boot-msg">正在准备战场…</p><i id="boot-fill"></i></div>
+    <div id="fatal" hidden></div>
+  </main>
+  <script src="./saltline-engine.js?v=20261118a"></script>
+  <script type="module" src="./main.js?v=20261118a"></script>
+</body>
+</html>
